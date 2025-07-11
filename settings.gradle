@@ -1,0 +1,4 @@
+rootProject.name = 'Erp-Services'
+include(":common-lib")
+include(":user-service")
+include(":server-service")
