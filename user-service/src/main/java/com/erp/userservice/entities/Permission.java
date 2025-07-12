@@ -24,4 +24,12 @@ public class Permission {
 
     @OneToMany(mappedBy = "permission")
     private Set<RolePermission> rolePermissions;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }

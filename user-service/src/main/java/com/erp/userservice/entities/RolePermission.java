@@ -21,6 +21,21 @@ public class RolePermission {
     @JoinColumn(name = "role_id")
     private Role role;
 
+    public Permission getPermission() {
+        return permission;
+    }
+
+    public void setPermission(Permission permission) {
+        this.permission = permission;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     @ManyToOne
     @JoinColumn(name = "permission_id")

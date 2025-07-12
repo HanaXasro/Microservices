@@ -3,6 +3,8 @@ package com.erp.userservice.seeders;
 import com.erp.commonlib.helper.PermissionHelper;
 import com.erp.userservice.entities.Permission;
 import com.erp.userservice.entities.Role;
+import com.erp.userservice.entities.RolePermission;
+import com.erp.userservice.entities.User;
 import com.erp.userservice.repositories.IRole;
 import com.erp.userservice.repositories.IRolePermission;
 import com.erp.userservice.repositories.IUser;
@@ -15,14 +17,11 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Slf4j
 @Component
 public class UserRolePermissionSeeder implements CommandLineRunner {
-
-
-
-
 
         @Autowired
         private IPermission permissionRepository;
@@ -72,15 +71,16 @@ public class UserRolePermissionSeeder implements CommandLineRunner {
             }
 
             // 3. Assign all permissions to SuperAdmin role
+            Role adminRole = superAdminRole;
             for (Permission perm : savedPermissions) {
                 boolean alreadyAssigned = rolePermissionRepository.findAll()
                         .stream()
-                        .anyMatch(rp -> rp.getRole().getId().equals(superAdminRole.getId().getId()) &&
-                                rp.getPermissionId().equals(perm.getId()));
+                        .anyMatch(rp -> rp.getRole().getId() == adminRole.getId() &&
+                                rp.getPermission().getId() == perm.getId());
                 if (!alreadyAssigned) {
                     RolePermission rp = new RolePermission();
-                    rp.setRoleId(superAdminRole.getId());
-                    rp.setPermissionId(perm.getId());
+                    rp.setRole(superAdminRole);
+                    rp.setPermission(perm);
                     rolePermissionRepository.save(rp);
                 }
             }
@@ -94,8 +94,8 @@ public class UserRolePermissionSeeder implements CommandLineRunner {
 
             if (!userExists) {
                 User user = new User();
-                user.setFirstName("Super");
-                user.setLastName("Admin");
+                user.setFirst_name("Super");
+                user.setLast_name("Admin");
                 user.setUsername(username);
 
                 // Hash the password using BCrypt
@@ -106,7 +106,7 @@ public class UserRolePermissionSeeder implements CommandLineRunner {
                 User savedUser = userRepository.save(user);
 
                 // Assign role to user (assuming many-to-many)
-                savedUser.getRoles().add(superAdminRole);
+                savedUser.setRole(superAdminRole);
                 userRepository.save(savedUser);
             }
         }
