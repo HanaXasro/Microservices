@@ -25,6 +25,9 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Erp-Services.api-gateway" options="-parameters" />
+      <module name="Erp-Services.api-gateway.main" options="-parameters" />
+      <module name="Erp-Services.api-gateway.test" options="-parameters" />
       <module name="Erp-Services.common-lib" options="-parameters" />
       <module name="Erp-Services.common-lib.main" options="-parameters" />
       <module name="Erp-Services.common-lib.test" options="-parameters" />
@@ -34,6 +37,9 @@
       <module name="Erp-Services.user-service" options="-parameters" />
       <module name="Erp-Services.user-service.main" options="-parameters" />
       <module name="Erp-Services.user-service.test" options="-parameters" />
+      <module name="api-gateway" options="-parameters" />
+      <module name="api-gateway.main" options="-parameters" />
+      <module name="api-gateway.test" options="-parameters" />
       <module name="common-lib" options="-parameters" />
       <module name="common-lib.main" options="-parameters" />
       <module name="common-lib.test" options="-parameters" />

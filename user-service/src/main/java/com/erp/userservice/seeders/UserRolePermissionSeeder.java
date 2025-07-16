@@ -8,7 +8,6 @@ import com.erp.userservice.entities.User;
 import com.erp.userservice.repositories.IRole;
 import com.erp.userservice.repositories.IRolePermission;
 import com.erp.userservice.repositories.IUser;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -17,9 +16,8 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-@Slf4j
+
 @Component
 public class UserRolePermissionSeeder implements CommandLineRunner {
 
