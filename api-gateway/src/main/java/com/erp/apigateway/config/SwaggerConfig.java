@@ -19,14 +19,4 @@ public class SwaggerConfig {
                         .version("1.0")
                         .description("API documentation for your Spring Boot application"));
     }
-
-    @Bean
-    public GroupedOpenApi userApi() {
-        return GroupedOpenApi.builder()
-                .group("User Service")
-                .pathsToMatch("/api/user/**")
-                .build();
-    }
-
-
 }
