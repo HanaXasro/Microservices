@@ -4,6 +4,7 @@ import com.erp.userservice.dto.LoginRequestDto;
 import com.erp.userservice.dto.LoginResponseDto;
 import com.erp.userservice.services.IUserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +22,7 @@ public class UserController {
     private IUserService userService;
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponseDto> login(@RequestBody LoginRequestDto loginRequestDto) {
-        try {
-            LoginResponseDto response = userService.login(loginRequestDto);
-            return ResponseEntity.ok(response);
-        } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(new LoginResponseDto(e.getMessage()));
-        }
+    public ResponseEntity<LoginResponseDto> login(@Valid @RequestBody LoginRequestDto loginRequestDto) {
+            return ResponseEntity.ok(userService.login(loginRequestDto));
     }
 }

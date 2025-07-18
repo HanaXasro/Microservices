@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common-lib/Erp-Services.common-lib.main.iml" filepath="$PROJECT_DIR$/.idea/modules/common-lib/Erp-Services.common-lib.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/user-service/Erp-Services.user-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/user-service/Erp-Services.user-service.main.iml" />
     </modules>
   </component>

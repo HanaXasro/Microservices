@@ -1,5 +1,7 @@
 package com.erp.userservice.services.impl;
 
+import com.erp.commonlib.exceptions.BadRequestException;
+import com.erp.commonlib.exceptions.NotFoundException;
 import com.erp.userservice.dto.LoginRequestDto;
 import com.erp.userservice.dto.LoginResponseDto;
 import com.erp.userservice.entities.User;
@@ -23,11 +25,11 @@ public class UserService implements IUserService {
     public LoginResponseDto login(LoginRequestDto loginRequestDto) {
         // Find user by username
         User user = userRepo.findByUsername(loginRequestDto.getUsername())
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new BadRequestException("User not found"));
 
         // Verify password
         if (!BCrypt.checkpw(loginRequestDto.getPassword(), user.getPassword())) {
-            throw new RuntimeException("Invalid password");
+            throw new NotFoundException("Invalid password");
         }
 
         // Generate token (using JWT in this example)
