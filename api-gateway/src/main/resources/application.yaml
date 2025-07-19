@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: user-service
+              uri: lb://user-service
+              predicates:
+                - Path=/api/user/**,/api/auth/**,/user/**
+
+server:
+  port: 8051
+
+eureka:
+  client:
+    preferSameZoneEureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /
+    urls:
+      - name: API Gateway Service
+        url: /v3/api-docs
+      - name: User Service
+        url: /user/v3/api-docs
