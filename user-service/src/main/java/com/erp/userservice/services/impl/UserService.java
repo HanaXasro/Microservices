@@ -2,6 +2,7 @@ package com.erp.userservice.services.impl;
 
 import com.erp.commonlib.exceptions.BadRequestException;
 import com.erp.commonlib.exceptions.NotFoundException;
+import com.erp.commonlib.exceptions.UnauthorizedException;
 import com.erp.userservice.dto.LoginRequestDto;
 import com.erp.userservice.dto.LoginResponseDto;
 import com.erp.userservice.entities.User;
@@ -19,23 +20,20 @@ public class UserService implements IUserService {
     private IUser userRepo;
 
     @Autowired
-    private JwtTokenUtil jwtTokenUtil; // You'll need a JWT utility class
+    private JwtTokenUtil jwtTokenUtil;
 
     @Override
     public LoginResponseDto login(LoginRequestDto loginRequestDto) {
-        // Find user by username
-        User user = userRepo.findByUsername(loginRequestDto.getUsername())
-                .orElseThrow(() -> new BadRequestException("User not found"));
 
-        // Verify password
+        User user = userRepo.findByUsername(loginRequestDto.getUsername())
+                .orElseThrow(() -> new UnauthorizedException("Unauthorized"));
+
         if (!BCrypt.checkpw(loginRequestDto.getPassword(), user.getPassword())) {
-            throw new NotFoundException("Invalid password");
+            throw new UnauthorizedException("Unauthorized");
         }
 
-        // Generate token (using JWT in this example)
         String token = jwtTokenUtil.generateToken(user);
 
-        // Create and return response
         return new LoginResponseDto(token);
     }
 }

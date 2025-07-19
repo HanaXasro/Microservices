@@ -25,10 +25,18 @@ public class JwtTokenUtil {
     @Value("${jwt.expiration}")
     private Long expiration;
 
+    @Value("${jwt.signature}")
+    private String signature;
+
+    @Value("${jwt.audiences}")
+    private String audiences;
+
     // Generate token for user
     public String generateToken(User user) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("sub", user.getUsername());
+        claims.put("aud", audiences);
+        claims.put("iss", signature);
         claims.put("userId", user.getId());  // Add userId to claims
         if (user.getRole() != null && user.getRole().getRolePermissions() != null) {
             List<String> permissions = user.getRole().getRolePermissions().stream()
