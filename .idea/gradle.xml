@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/api-gateway" />
             <option value="$PROJECT_DIR$/common-lib" />
+            <option value="$PROJECT_DIR$/employee-service" />
             <option value="$PROJECT_DIR$/server-service" />
             <option value="$PROJECT_DIR$/user-service" />
           </set>
