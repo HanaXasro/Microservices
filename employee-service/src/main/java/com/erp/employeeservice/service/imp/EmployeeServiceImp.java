@@ -16,8 +16,6 @@ public class EmployeeServiceImp implements EmployeeService {
     @Autowired
     private IEmployee employeeRepository;
 
-    @Autowired
-    private EmployeeMapper employeeMapper;
 
     @Override
     public EmployeeDto CreateEmployee(EmployeeCDto employeeDto) {
@@ -26,12 +24,12 @@ public class EmployeeServiceImp implements EmployeeService {
         }
 
         // 2. Map DTO to Entity
-        Employee employee = employeeMapper.toEntity(employeeDto);
+        Employee employee = EmployeeMapper.INSTANCE.toEntity(employeeDto);
 
         // 3. Save entity
         Employee savedEmployee = employeeRepository.save(employee);
 
         // 4. Map Entity to Response DTO
-        return employeeMapper.toDto(savedEmployee);
+        return EmployeeMapper.INSTANCE.toDto(savedEmployee);
     }
 }
