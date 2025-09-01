@@ -1,3 +1,6 @@
+server:
+  port: 8050
+
 spring:
   application:
     name: user-service
@@ -13,9 +16,11 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
-
-server:
-  port: 8050
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 springdoc:
   api-docs:
