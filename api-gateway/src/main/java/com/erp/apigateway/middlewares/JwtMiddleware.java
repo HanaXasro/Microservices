@@ -44,7 +44,7 @@ public class JwtMiddleware implements GlobalFilter, Ordered {
             String token = authHeader.substring(7);
 
             try {
-                String secret = rabbitProducer.sendAndReceive("user.claims");
+                String secret = rabbitProducer.sendAndReceive("user.secret");
 
                 byte[] keyBytes = Base64.getDecoder().decode(secret);
 

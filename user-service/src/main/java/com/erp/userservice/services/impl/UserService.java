@@ -36,4 +36,9 @@ public class UserService implements IUserService {
 
         return new LoginResponseDto(token);
     }
+
+    @Override
+    public String User() {
+        return "";
+    }
 }

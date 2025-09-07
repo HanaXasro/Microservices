@@ -1,45 +1,35 @@
 package com.erp.userservice.services.impl;
 
+import com.erp.userservice.messaging.producer.RabbitProducer;
 import com.erp.userservice.services.IUserContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class UserContext implements IUserContext {
 
-    private Long userId;
-    private String username;
-    private List<String> permissions;
+    @Autowired
+    private RabbitProducer rabbitProducer;
+
 
     @Override
     public Long getUserId() {
-        return userId;
-    }
-
-    @Override
-    public void setUserId(Long userId) {
-        this.userId = userId;
+        return 12l;
     }
 
     @Override
     public String getUsername() {
-        return username;
+        return "";
     }
 
-    @Override
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     @Override
     public List<String> getPermissions() {
+        var permissions = rabbitProducer.sendAndReceive("permission.user","def" , List.class);
         return permissions;
-    }
-
-    @Override
-    public void setPermissions(List<String> permissions) {
-        this.permissions = permissions;
     }
 
 }

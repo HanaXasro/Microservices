@@ -25,12 +25,8 @@ spring:
 rabbitmq:
   exchange: user.exchange
   queues:
-    - name: user.info.queue
-      routing-key: user.info
-    - name: user.permissions.queue
-      routing-key: user.permissions
-    - name: user.claims.queue
-      routing-key: user.claims
+    - name: user.secret.queue
+      routing-key: user.secret
 
 springdoc:
   api-docs:
