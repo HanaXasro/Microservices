@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/common-lib/Erp-Services.common-lib.main.iml" filepath="$PROJECT_DIR$/.idea/modules/common-lib/Erp-Services.common-lib.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/employee-service/Erp-Services.employee-service.iml" filepath="$PROJECT_DIR$/.idea/modules/employee-service/Erp-Services.employee-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/employee-service/Erp-Services.employee-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/employee-service/Erp-Services.employee-service.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/user-service/Erp-Services.user-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/user-service/Erp-Services.user-service.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/employee-service/src/main/main.iml" filepath="$PROJECT_DIR$/employee-service/src/main/main.iml" />

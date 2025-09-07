@@ -22,6 +22,16 @@ spring:
     username: guest
     password: guest
 
+rabbitmq:
+  exchange: user.exchange
+  queues:
+    - name: user.info.queue
+      routing-key: user.info
+    - name: user.permissions.queue
+      routing-key: user.permissions
+    - name: user.claims.queue
+      routing-key: user.claims
+
 springdoc:
   api-docs:
     enabled: true
@@ -40,8 +50,8 @@ eureka:
     health-check-url-path: /actuator/health
 
 jwt:
-  secret: aklsdjmfn908rojknm390ruawioujnKJHBhsdfkljf9783LKJlaskdjnmf
-  signature: www.erp.com
+  secret: YWtzZGptZm45MDhyb2prbm0zOTBydWF3aW91anpKS0hCaHNkZmtsamY5NzgzTEtKbGFza2Rqbm1m
+  issuer: www.erp.com
   audiences: www.erp.com
   expiration: 86400
 
